@@ -1,0 +1,44 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## **EDA For the CAR dataset**  
+
+In this notebook I'm going to explore the *car* dataset in order to understand its characteristics before deploying a shiny app using this data.  
+
+```{r}
+## summary
+data("cars")
+summary(cars)
+```  
+There are two variables. Let's plot them.  
+
+```{r}
+##plot
+plot(cars$speed, cars$dist)
+```  
+We can fit a linear model to this data and see its performance.  
+
+```{r}
+## fitting model
+modelFit <- lm(dist~speed, data=cars)
+summary(modelFit)
+```  
+Now let's see the residuals plot and the fitted plot.  
+
+```{r}
+par(mfrow=c(1,2))
+
+## plot1
+plot(cars$speed, cars$dist)
+abline(modelFit, lwd=2, col="blue", lty=2)
+
+## plot2
+plot(modelFit,6)
+```
+
+
+
+ 
+ 
